@@ -1,0 +1,284 @@
+{
+  "footer": {
+    "tagline": "Professional accounting software for businesses of all sizes",
+    "compliance": "Compliant with international accounting standards",
+    "quickLinks": "Quick Links",
+    "help": "Help Center",
+    "faq": "FAQ",
+    "apiDocs": "API Documentation",
+    "rights": "All rights reserved.",
+    "socialMedia": "Follow us on social media",
+    "subscribe": "Subscribe to our newsletter",
+    "subscribeButton": "Subscribe",
+    "legal": "Legal",
+    "terms": "Terms of Service",
+    "policy": "Privacy Policy",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "allRightsReserved": "All rights reserved.",
+    "version": "Version"
+  },
+  "ModuleMenu": {
+    "dashboard": "Papan Pemuka",
+    "crm": {
+      "title": "Jualan",
+      "accounts": "Syarikat",
+      "opportunities": "Peluang",
+      "contacts": "Kenalan",
+      "leads": "Petunjuk",
+      "contracts": "Kontrak"
+    },
+    "projects": "Projek",
+    "emails": "E-mel",
+    "tasks": "Tugas",
+    "invoices": "Invois",
+    "reports": "Laporan",
+    "documents": "Dokumen",
+    "storage": "Storan",
+    "settings": "Pentadbiran"
+  },
+  "DashboardPage": {
+    "containerTitle": "Papan Pemuka",
+    "totalRevenue": "Jumlah pendapatan",
+    "containerDescription": "Selamat datang ke NextCRM, di sini anda dapat melihat semua maklumat penting tentang perniagaan anda.",
+    "expectedRevenue": "Pendapatan dijangka",
+    "activeUsers": "Pengguna aktif",
+    "accounts": "Syarikat",
+    "opportunities": "Tawaran",
+    "contacts": "Kenalan",
+    "leads": "Petunjuk",
+    "projects": "Projek",
+    "tasks": "Tugas",
+    "myTasks": "Tugas saya",
+    "invoices": "Invois",
+    "documents": "Dokumen",
+    "storage": "Storan"
+  },
+  "AccountingDashboard": {
+    "title": "Gambaran Keseluruhan Kewangan",
+    "subtitle": "Cerapan perakaunan masa nyata dan metrik prestasi",
+    "revenue": "Jumlah Hasil",
+    "expenses": "Jumlah Perbelanjaan",
+    "netProfit": "Untung Bersih",
+    "receivables": "Akaun Belum Terima",
+    "payables": "Akaun Belum Bayar",
+    "profitMargin": "Margin Bersih",
+    "performance": "Prestasi Kewangan",
+    "last30Days": "30 Hari Terakhir",
+    "vsLastMonth": "vs Bulan Lepas",
+    "noData": "Tiada data kewangan tersedia untuk tempoh ini."
+  },
+  "RegisterComponent": {
+    "cardTitle": "Cipta akaun baru",
+    "cardDescription": "Cipta akaun dengan log masuk menggunakan",
+    "label": "Bahasa",
+    "locale": "{locale, select, de {Bahasa Jerman} en {Bahasa Inggeris} cz {Bahasa Czech} uk {Bahasa Ukraine} ms {Bahasa Melayu} zh {Bahasa Cina} other {Tidak diketahui}}"
+  },
+  "CrmModuleMenuComponent": {
+    "menuTitle": "Jualan"
+  },
+  "Navigation": {
+    "dashboard": "Papan Pemuka",
+    "accounting": "Perakaunan",
+    "crm": "CRM",
+    "sales": "Jualan",
+    "quotes": "Sebut Harga Jualan",
+    "orders": "Pesanan Jualan",
+    "deliveries": "Pesanan Penghantaran",
+    "purchases": "Pembelian",
+    "requisitions": "Permintaan Pembelian",
+    "purchaseOrders": "Pesanan Pembelian",
+    "goodsReceived": "Nota Penerimaan Barang",
+    "inventory": "Inventori",
+    "warehouses": "Gudang",
+    "stockMovements": "Pergerakan Stok",
+    "projects": "Projek",
+    "emails": "Emails",
+    "documents": "Dokumen",
+    "reports": "Laporan",
+    "settings": "Tetapan",
+    "contacts": "Kenalan",
+    "invoices": "Invois",
+    "products": "Produk",
+    "payments": "Pembayaran",
+    "company": "Syarikat",
+    "edition": "Edisi",
+    "chartOfAccounts": "Carta Akaun",
+    "bankReconciliation": "Penyesuaian Bank"
+  },
+  "Topbar": {
+    "search": "Cari segala-galanya...",
+    "toggleQuickDrawer": "Togel laci pantas",
+    "viewNotifications": "Lihat notifikasi",
+    "openUserMenu": "Buka menu pengguna"
+  },
+  "Auth": {
+    "login": {
+      "title": "Log masuk ke akaun anda",
+      "description": "Log masuk untuk mengakses dashboard anda",
+      "emailLabel": "Alamat e-mel",
+      "emailPlaceholder": "Masukkan alamat e-mel anda",
+      "passwordLabel": "Kata laluan",
+      "passwordPlaceholder": "Masukkan kata laluan anda",
+      "submitButton": "Log masuk",
+      "registerLink": "Belum mempunyai akaun? Daftar",
+      "invalidCredentials": "E-mel atau kata laluan tidak sah",
+      "error": "Ralat semasa log masuk"
+    },
+    "register": {
+      "title": "Daftar akaun baru",
+      "description": "Daftar untuk mula menggunakan perisian kami",
+      "nameLabel": "Nama",
+      "namePlaceholder": "Masukkan nama anda",
+      "emailLabel": "Alamat e-mel",
+      "emailPlaceholder": "Masukkan alamat e-mel anda",
+      "passwordLabel": "Kata laluan",
+      "passwordPlaceholder": "Masukkan kata laluan anda",
+      "confirmPasswordLabel": "Sahkan kata laluan",
+      "confirmPasswordPlaceholder": "Masukkan semula kata laluan anda",
+      "submitButton": "Daftar",
+      "loginLink": "Sudah mempunyai akaun? Log masuk",
+      "passwordMismatch": "Kata laluan tidak sepadan",
+      "error": "Ralat semasa pendaftaran"
+    }
+  },
+  "UserMenu": {
+    "openUserMenu": "Buka menu pengguna",
+    "profile": "Profil Anda",
+    "settings": "Tetapan",
+    "signOut": "Log Keluar"
+  },
+  "Contacts": {
+    "title": "Kenalan",
+    "description": "Urus pelanggan, pembekal, dan rakan kongsi anda.",
+    "addContact": "Tambah Kenalan",
+    "directoryTitle": "Direktori Kenalan",
+    "directoryDescription": "Senarai lengkap hubungan perniagaan anda.",
+    "table": {
+      "name": "Nama",
+      "type": "Jenis",
+      "regNo": "No. Pendaftaran",
+      "taxId": "ID Cukai",
+      "status": "Status",
+      "actions": "Tindakan",
+      "roles": "Peranan"
+    },
+    "roles": {
+      "customer": "Pelanggan",
+      "supplier": "Pembekal"
+    },
+    "status": {
+      "active": "Aktif",
+      "inactive": "Tidak Aktif"
+    },
+    "actions": {
+      "viewProfile": "Lihat Profil",
+      "editContact": "Kemas Kini Kenalan",
+      "delete": "Padam",
+      "toggleStatus": "Togel Status Aktif",
+      "cancel": "Batal",
+      "confirm": "Sahkan"
+    },
+    "messages": {
+      "successTitle": "Berjaya dikemas kini",
+      "fetchError": "Gagal mengambil data kenalan",
+      "fetchErrorTitle": "Ralat",
+      "errorTitle": "Ralat",
+      "errorDefault": "Berlaku ralat yang tidak dijangka.",
+      "deleteConfirmTitle": "Adakah anda pasti?",
+      "deleteConfirmDescription": "Tindakan ini tidak boleh dibatalkan. Ini akan memadamkan secara kekal {name} daripada kenalan anda.",
+      "deleteConfirm": "Adakah anda pasti mahu memadam {name}?",
+      "deleteSuccess": "Kenalan berjaya dipadamkan.",
+      "deleteError": "Gagal memadamkan kenalan.",
+      "updateSuccess": "{name} berjaya dikemas kini."
+    },
+    "delete": {
+      "title": "Padam Kenalan",
+      "description": "Adakah anda pasti mahu memadam {name}? Tindakan ini tidak boleh dibatalkan.",
+      "confirm": "Padam",
+      "cancel": "Batal"
+    }
+  },
+  "ContactModal": {
+    "title": "Tambah Pantas {type}",
+    "editTitle": "Kemas Kini Kenalan",
+    "description": "Cipta profil kenalan asas untuk meneruskan dokumen anda.",
+    "fields": {
+      "legalname": "Nama Syarikat / Nama Sah",
+      "legalnamePlaceholder": "Masukkan nama syarikat...",
+      "email": "Alamat E-mel",
+      "emailPlaceholder": "contact@example.com",
+      "phone": "Nombor Telefon",
+      "phonePlaceholder": "+60...",
+      "regNo": "No. Pendaftaran",
+      "regNoPlaceholder": "cth. 202401012345",
+      "regNoType": "Jenis Pendaftaran",
+      "taxNo": "No. Pengenalan Cukai (TIN)",
+      "taxNoPlaceholder": "cth. C25870427090",
+      "sstNo": "No. Pendaftaran SST (Pilihan)",
+      "sstNoPlaceholder": "cth. W10-1808-32000001",
+      "msicCode": "Kod MSIC (Pilihan)",
+      "msicCodePlaceholder": "cth. 46900",
+      "addressLine1": "Alamat Baris 1",
+      "addressLine1Placeholder": "No. 123, Jalan Ampang",
+      "addressLine2": "Alamat Baris 2 (Pilihan)",
+      "addressLine2Placeholder": "Suite 45-01",
+      "city": "Bandar",
+      "cityPlaceholder": "Kuala Lumpur",
+      "state": "Negeri",
+      "statePlaceholder": "Wilayah Persekutuan",
+      "postalCode": "Poskod",
+      "postalCodePlaceholder": "50450",
+      "country": "Negara",
+      "isCustomer": "Adalah Pelanggan",
+      "isSupplier": "Adalah Pembekal",
+      "legalnameError": "Nama syarikat mestilah sekurang-kurangnya 2 aksara",
+      "emailError": "Alamat e-mel tidak sah",
+      "phoneError": "Nombor telefon diperlukan",
+      "regNoError": "No. Pendaftaran diperlukan",
+      "taxNoError": "TIN diperlukan untuk pematuhan LHDN",
+      "addressError": "Alamat utama diperlukan",
+      "postalCodeError": "Poskod diperlukan",
+      "cityError": "Bandar diperlukan",
+      "stateError": "Negeri diperlukan",
+      "regNoTypeError": "Jenis pendaftaran diperlukan"
+    },
+    "registrationTypes": {
+      "none": "Tanpa Jenis",
+      "brn": "BRN",
+      "ic": "IC / Kad Pengenalan",
+      "passport": "Pasport"
+    },
+    "sections": {
+      "basic": "Maklumat Asas",
+      "tax": "Butiran LHDN & Cukai",
+      "address": "Alamat Kenalan"
+    },
+    "buttons": {
+      "cancel": "Batal",
+      "create": "Cipta Kenalan",
+      "creating": "Mencipta...",
+      "update": "Kemas Kini Kenalan",
+      "updating": "Mengemas kini..."
+    },
+    "messages": {
+      "successTitle": "Kenalan Disimpan",
+      "successDescription": "{name} telah berjaya ditambah.",
+      "errorTitle": "Tindakan Gagal",
+      "errorDefault": "Sesuatu yang tidak kena berlaku semasa menyimpan kenalan.",
+      "validationErrorSummary": "Sila semak semua tab untuk medan yang diperlukan."
+    },
+    "types": {
+      "customer": "Pelanggan",
+      "vendor": "Vendor",
+      "supplier": "Pembekal"
+    }
+  },
+  "DataTable": {
+    "searchPlaceholder": "Cari ...",
+    "columns": "Lajur",
+    "noResults": "Tiada keputusan.",
+    "previous": "Sebelumnya",
+    "next": "Seterusnya"
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "ModuleMenu": {
+    "dashboard": "仪表板",
+    "crm": {
+      "title": "销售",
+      "accounts": "公司",
+      "opportunities": "机会",
+      "contacts": "联系人",
+      "leads": "潜在客户",
+      "contracts": "合同"
+    },
+    "projects": "项目",
+    "emails": "电子邮件",
+    "tasks": "任务",
+    "invoices": "发票",
+    "reports": "报告",
+    "documents": "文档",
+    "storage": "存储",
+    "settings": "管理"
+  },
+  "DashboardPage": {
+    "containerTitle": "仪表板",
+    "totalRevenue": "总收入",
+    "containerDescription": "欢迎使用 NextCRM，在这里您可以查看有关您业务的所有重要信息。",
+    "expectedRevenue": "预期收入",
+    "activeUsers": "活跃用户",
+    "accounts": "公司",
+    "opportunities": "交易",
+    "contacts": "联系人",
+    "leads": "潜在客户",
+    "projects": "项目",
+    "tasks": "任务",
+    "myTasks": "我的任务",
+    "invoices": "发票",
+    "documents": "文档",
+    "storage": "存储"
+  },
+  "AccountingDashboard": {
+    "title": "财务概览",
+    "subtitle": "实时会计见解和绩效指标",
+    "revenue": "总收入",
+    "expenses": "总支出",
+    "netProfit": "净利润",
+    "receivables": "应收账款",
+    "payables": "应付账款",
+    "profitMargin": "净利率",
+    "performance": "财务绩效",
+    "last30Days": "最近 30 天",
+    "vsLastMonth": "与上月相比",
+    "noData": "该时间段内没有可用的财务数据。"
+  },
+  "RegisterComponent": {
+    "cardTitle": "创建新账户",
+    "cardDescription": "通过以下方式登录创建账户",
+    "label": "语言",
+    "locale": "{locale, select, de {德语} en {英语} cz {捷克语} uk {乌克兰语} ms {马来语} zh {中文} other {未知}}"
+  },
+  "CrmModuleMenuComponent": {
+    "menuTitle": "销售"
+  },
+  "Navigation": {
+    "dashboard": "仪表板",
+    "accounting": "会计",
+    "crm": "客户关系管理",
+    "sales": "销售",
+    "quotes": "销售报价单",
+    "orders": "销售订单",
+    "deliveries": "送货单",
+    "purchases": "采购",
+    "requisitions": "采购申请",
+    "purchaseOrders": "采购订单",
+    "goodsReceived": "收货单",
+    "inventory": "库存",
+    "warehouses": "仓库",
+    "stockMovements": "库存变动",
+    "projects": "项目",
+    "emails": "电子邮件",
+    "documents": "文档",
+    "reports": "报告",
+    "settings": "设置",
+    "contacts": "联系人",
+    "invoices": "发票",
+    "products": "产品",
+    "payments": "付款",
+    "company": "公司",
+    "edition": "版本",
+    "chartOfAccounts": "会计科目表",
+    "bankReconciliation": "银行对账"
+  },
+  "Topbar": {
+    "search": "搜索一切...",
+    "toggleQuickDrawer": "切换快捷抽屉",
+    "viewNotifications": "查看通知",
+    "openUserMenu": "打开用户菜单"
+  },
+  "UserMenu": {
+    "openUserMenu": "打开用户菜单",
+    "profile": "个人资料",
+    "settings": "设置",
+    "signOut": "登出"
+  },
+  "Contacts": {
+    "title": "联系人",
+    "description": "管理您的客户、供应商和合作伙伴。",
+    "addContact": "添加联系人",
+    "directoryTitle": "联系人目录",
+    "directoryDescription": "您业务关系的完整列表。",
+    "table": {
+      "name": "名称",
+      "type": "类型",
+      "regNo": "注册号",
+      "taxId": "税务 ID",
+      "status": "状态",
+      "actions": "操作",
+      "roles": "角色"
+    },
+    "roles": {
+      "customer": "客户",
+      "supplier": "供应商"
+    },
+    "status": {
+      "active": "活跃",
+      "inactive": "不活跃"
+    },
+    "actions": {
+      "viewProfile": "查看个人资料",
+      "editContact": "编辑联系人",
+      "delete": "删除",
+      "toggleStatus": "切换活跃状态",
+      "cancel": "取消",
+      "confirm": "确认"
+    },
+    "messages": {
+      "successTitle": "成功更新",
+      "fetchError": "获取联系人失败",
+      "fetchErrorTitle": "错误",
+      "errorTitle": "错误",
+      "errorDefault": "发生了意外错误。",
+      "deleteConfirmTitle": "您确定吗？",
+      "deleteConfirmDescription": "此操作无法撤销。这将永久从您的联系人中删除 {name}。",
+      "deleteConfirm": "您确定要删除 {name} 吗？",
+      "deleteSuccess": "联系人已成功删除。",
+      "deleteError": "删除联系人失败。",
+      "updateSuccess": "{name} 已成功更新。"
+    },
+    "delete": {
+      "title": "删除联系人",
+      "description": "你确定要删除 {name} 吗？此操作无法撤销。",
+      "confirm": "确认",
+      "cancel": "取消"
+    }
+  },
+  "ContactModal": {
+    "title": "快速添加 {type}",
+    "editTitle": "编辑联系人",
+    "description": "创建一个基本的联系人资料以继续您的文档。",
+    "fields": {
+      "legalname": "公司名称 / 法律名称",
+      "legalnamePlaceholder": "输入公司名称...",
+      "email": "电子邮件地址",
+      "emailPlaceholder": "contact@example.com",
+      "phone": "电话号码",
+      "phonePlaceholder": "+60...",
+      "regNo": "注册号",
+      "regNoPlaceholder": "例如 202401012345",
+      "regNoType": "注册类型",
+      "taxNo": "税务识别码 (TIN)",
+      "taxNoPlaceholder": "例如 C25870427090",
+      "sstNo": "SST 注册号（可选）",
+      "sstNoPlaceholder": "例如 W10-1808-32000001",
+      "msicCode": "MSIC 代码（可选）",
+      "msicCodePlaceholder": "例如 46900",
+      "addressLine1": "地址第 1 行",
+      "addressLine1Placeholder": "No. 123, Jalan Ampang",
+      "addressLine2": "地址第 2 行（可选）",
+      "addressLine2Placeholder": "Suite 45-01",
+      "city": "城市",
+      "cityPlaceholder": "吉隆坡",
+      "state": "州/省",
+      "statePlaceholder": "联邦直辖区",
+      "postalCode": "邮政编码",
+      "postalCodePlaceholder": "50450",
+      "country": "国家",
+      "isCustomer": "是客户",
+      "isSupplier": "是供应商",
+      "legalnameError": "公司名称必须至少 2 个字符",
+      "emailError": "无效的电子邮件地址",
+      "phoneError": "电话号码为必填项",
+      "regNoError": "注册号为必填项",
+      "taxNoError": "LHDN 合规需要 TIN",
+      "addressError": "主要地址是必填项",
+      "postalCodeError": "邮政编码是必填项",
+      "cityError": "城市是必填项",
+      "stateError": "州/省是必填项",
+      "regNoTypeError": "注册类型是必填项"
+    },
+    "registrationTypes": {
+      "none": "无类型",
+      "brn": "BRN / 商业注册号",
+      "ic": "IC / 身份证号",
+      "passport": "护照号"
+    },
+    "sections": {
+      "basic": "基本信息",
+      "tax": "LHDN 和税务详情",
+      "address": "联系地址"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "create": "创建联系人",
+      "creating": "正在创建...",
+      "update": "更新联系人",
+      "updating": "正在更新..."
+    },
+    "messages": {
+      "successTitle": "联系人已保存",
+      "successDescription": "{name} 已成功添加。",
+      "errorTitle": "操作失败",
+      "errorDefault": "保存联系人时出错。",
+      "validationErrorSummary": "请检查所有选项卡中的必填项。"
+    },
+    "types": {
+      "customer": "客户",
+      "vendor": "供应商",
+      "supplier": "供应商"
+    }
+  },
+  "DataTable": {
+    "searchPlaceholder": "搜索...",
+    "columns": "列",
+    "noResults": "没有结果。",
+    "previous": "上一页",
+    "next": "下一页"
+  }
+}
