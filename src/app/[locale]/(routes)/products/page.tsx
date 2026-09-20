@@ -6,7 +6,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { productAPI } from '@/services/api/product';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/card';
 import { Button } from '@/components/button';
-import { Plus, Package, ShoppingBag, Tags, MoreHorizontal, Edit, Trash, BarChart3 } from 'lucide-react';
+import { Plus, Package, ShoppingBag, Tags, MoreHorizontal, Edit, Trash, BarChart3, Upload } from 'lucide-react';
 import { Badge } from '@/components/badge';
 import { 
   DropdownMenu, 
@@ -18,6 +18,7 @@ import {
 } from '@/components/dropdown';
 import { useToast } from '@/components/usetoast';
 import { ProductModal } from '@/components/modals/product-modal';
+import { ImportModal } from '@/components/modals/import-modal';
 
 interface Product {
   id: string;
@@ -33,6 +34,7 @@ export default function ProductsPage() {
   const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isImportOpen, setIsImportOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const { toast } = useToast();
 
@@ -190,6 +192,23 @@ export default function ProductsPage() {
         onSuccess={fetchProducts}
         // NOTE: product-modal doesn't fully support edit yet, we will update it next.
         product={editingProduct}
+      />
+      <ImportModal 
+        isOpen={isImportOpen} 
+        onClose={() => setIsImportOpen(false)}
+        title="Import Products"
+        description="Upload a CSV file containing your products. Must include 'name' and 'sku'."
+        onUpload={async (file) => {
+          try {
+            const res = await productAPI.importCsv(file);
+            return { success: true, message: res.data.message };
+          } catch (err: any) {
+            return { success: false, message: err.response?.data?.message || 'Upload failed', errors: err.response?.data?.errors };
+          }
+        }}
+        onSuccess={() => {
+          fetchProducts();
+        }}
       />
     </div>
   );

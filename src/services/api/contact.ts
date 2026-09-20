@@ -7,4 +7,11 @@ export const contactsAPI = {
   update: (id: string | number, data: Record<string, unknown>) => api.put(`/contact/${id}`, data),
   patchStatus: (id: string | number, isActive: boolean) => api.patch(`/contact/${id}/status`, { isActive }),
   delete: (id: string | number) => api.delete(`/contact/${id}`),
+  importCsv: async (file: File) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return api.post('/contact/import', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
 };

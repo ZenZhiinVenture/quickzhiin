@@ -7,7 +7,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { journalEntryAPI } from '@/services/api/journalEntry';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/card';
 import { Button } from '@/components/button';
-import { Plus, BookText, MoreHorizontal, Eye, MessageSquareQuote } from 'lucide-react';
+import { Plus, BookText, MoreHorizontal, Eye, MessageSquareQuote, Upload } from 'lucide-react';
 import { Badge } from '@/components/badge';
 import { 
   DropdownMenu, 
@@ -22,6 +22,7 @@ import { useTranslations } from 'next-intl';
 import { format } from 'date-fns';
 import Modal from '@/components/modals';
 import { JournalEntryForm, JournalEntryFormValues } from '@/components/forms/accounting/JournalEntryForm';
+import { ImportModal } from '@/components/modals/import-modal';
 
 interface JournalEntryLine {
   id: string;
@@ -47,6 +48,7 @@ export default function JournalEntriesPage() {
   const [data, setData] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isImportOpen, setIsImportOpen] = useState(false);
   const [viewingJournal, setViewingJournal] = useState<JournalEntry | null>(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -265,6 +267,23 @@ export default function JournalEntriesPage() {
           </div>
         )}
       </Modal>
+      <ImportModal 
+        isOpen={isImportOpen} 
+        onClose={() => setIsImportOpen(false)}
+        title="Import Journal Entries"
+        description="Upload a CSV file containing your journal lines. Rows with the same 'reference' will be grouped as one entry. Must include 'accountId', 'debit', and 'credit'."
+        onUpload={async (file) => {
+          try {
+            const res = await journalEntryAPI.importCsv(file);
+            return { success: true, message: res.data.message };
+          } catch (err: any) {
+            return { success: false, message: err.response?.data?.message || 'Upload failed', errors: err.response?.data?.errors };
+          }
+        }}
+        onSuccess={() => {
+          fetchJournalEntries();
+        }}
+      />
     </div>
   );
 }

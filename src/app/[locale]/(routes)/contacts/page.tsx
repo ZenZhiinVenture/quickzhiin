@@ -6,7 +6,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { contactsAPI } from '@/services/api/contact';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/card';
 import { Button } from '@/components/button';
-import { Plus, UserPlus, Mail, Phone, MoreHorizontal, Edit, Trash, ExternalLink, Loader2, ShieldCheck } from 'lucide-react';
+import { Plus, UserPlus, Mail, Phone, MoreHorizontal, Edit, Trash, ExternalLink, Loader2, ShieldCheck, Upload } from 'lucide-react';
 import { Badge } from '@/components/badge';
 import {
   DropdownMenu,
@@ -21,6 +21,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { ContactModal } from '@/components/modals/contact-modal';
 import { AlertModal } from '@/components/modals/alert-modal';
+import { ImportModal } from '@/components/modals/import-modal';
 
 interface Contact {
   id: string;
@@ -39,6 +40,7 @@ export default function ContactsPage() {
   const [data, setData] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isImportOpen, setIsImportOpen] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
@@ -258,6 +260,13 @@ export default function ContactsPage() {
           </div>
         </div>
         <Button
+          variant="outline"
+          onClick={() => setIsImportOpen(true)}
+          className="flex gap-2"
+        >
+          <Upload size={18} /> Import CSV
+        </Button>
+        <Button
           onClick={() => {
             setSelectedContact(null);
             setIsModalOpen(true);
@@ -302,6 +311,23 @@ export default function ContactsPage() {
         description={t('messages.deleteConfirmDescription', { name: contactToDelete?.name || '' })}
         confirmText={t('actions.delete')}
         cancelText={t('actions.cancel')}
+      />
+      <ImportModal 
+        isOpen={isImportOpen} 
+        onClose={() => setIsImportOpen(false)}
+        title="Import Contacts"
+        description="Upload a CSV file containing your contacts. Must include 'legalName' header."
+        onUpload={async (file) => {
+          try {
+            const res = await contactsAPI.importCsv(file);
+            return { success: true, message: res.data.message };
+          } catch (err: any) {
+            return { success: false, message: err.response?.data?.message || 'Upload failed', errors: err.response?.data?.errors };
+          }
+        }}
+        onSuccess={() => {
+          fetchContacts();
+        }}
       />
     </div>
   );
