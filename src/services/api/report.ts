@@ -18,4 +18,13 @@ export const reportAPI = {
 
   getAgedPayables: () => 
     api.get('/report/aged-payables'),
+
+  getInventorySummary: () =>
+    api.get('/report/inventory-summary'),
+
+  getInventoryByLocation: () =>
+    api.get('/report/inventory-by-location'),
+
+  getInventoryDetail: (startDate?: string, endDate?: string) =>
+    api.get('/report/inventory-detail', { params: { startDate, endDate } }),
 };
