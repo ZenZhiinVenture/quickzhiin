@@ -9,7 +9,7 @@ export function getLocaleFromPath(path: string): string {
   const segments = path.split('/');
   const localeSegment = segments[1];
 
-  if (locales.includes(localeSegment as 'en' | 'ms' | 'zh' | 'es' | 'fr')) {
+  if (locales.includes(localeSegment as any)) {
     return localeSegment;
   }
 

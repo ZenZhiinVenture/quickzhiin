@@ -8,3 +8,4 @@ CLAUDE.md
 AGENTS.md
 test-results/.last-run.json
 playwright-report/*
+next-env.d.ts

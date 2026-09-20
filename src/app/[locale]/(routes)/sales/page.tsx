@@ -174,6 +174,50 @@ export default function SalesDashboard() {
     },
   ];
 
+  const orderColumns = [
+    { accessorKey: 'number', header: 'Order #' },
+    {
+      accessorKey: 'contact.legalname', header: 'Customer',
+      cell: ({ row }: any) => row.original.contact?.legalname || row.original.customer?.legalname || '—'
+    },
+    { accessorKey: 'date', header: 'Date', cell: ({ row }: any) => dayjs(row.original.date).format('DD MMM YYYY') },
+    { accessorKey: 'total', header: 'Total', cell: ({ row }: any) => `RM ${Number(row.original.total).toLocaleString('en-MY', { minimumFractionDigits: 2 })}` },
+    { accessorKey: 'status', header: 'Status', cell: ({ row }: any) => <StatusBadge status={row.original.status} /> },
+  ];
+
+  const invoiceColumns = [
+    { accessorKey: 'number', header: 'Inv #' },
+    {
+      accessorKey: 'contact.legalname', header: 'Customer',
+      cell: ({ row }: any) => row.original.contact?.legalname || row.original.customer?.legalname || '—'
+    },
+    { accessorKey: 'date', header: 'Date', cell: ({ row }: any) => dayjs(row.original.date).format('DD MMM YYYY') },
+    { accessorKey: 'total', header: 'Total', cell: ({ row }: any) => `RM ${Number(row.original.total).toLocaleString('en-MY', { minimumFractionDigits: 2 })}` },
+    { accessorKey: 'status', header: 'Status', cell: ({ row }: any) => <StatusBadge status={row.original.status} /> },
+    {
+      id: 'actions',
+      cell: ({ row }: any) => {
+        const invoice = row.original;
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0"><MoreVertical className="h-4 w-4" /></Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="glass">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem onClick={() => {
+                const pdfUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/transaction/invoice/${invoice.id}/pdf`;
+                window.open(pdfUrl, '_blank');
+              }}>
+                <FileText className="mr-2 h-4 w-4" /> Download PDF
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
+      },
+    },
+  ];
+
   const creditNoteColumns = [
     { accessorKey: 'number', header: 'CN #' },
     {
