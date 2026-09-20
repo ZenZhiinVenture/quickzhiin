@@ -99,6 +99,8 @@
     "settings": "Settings",
     "contacts": "Contacts",
     "invoices": "Invoices",
+    "bills": "Bills",
+    "banking": "Banking",
     "products": "Products",
     "payments": "Payments",
     "chartOfAccounts": "Chart of Accounts",

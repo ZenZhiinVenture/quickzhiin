@@ -23,8 +23,10 @@ import {
   ClipboardList,
   Truck,
   History,
-  FileSearch
+  FileSearch,
+  Landmark
 } from 'lucide-react';
+
 import { cn } from '@/utils/cn';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/button';
@@ -35,12 +37,16 @@ const menuItems = [
   { icon: Users, labelKey: 'contacts', href: '/contacts' },
   { icon: ShoppingBag, labelKey: 'sales', href: '/sales' },
   { icon: ShoppingCart, labelKey: 'purchases', href: '/purchases' },
+  { icon: Receipt, labelKey: 'invoices', href: '/invoices' },
+  { icon: FileText, labelKey: 'bills', href: '/Supplier/bills' },
   { icon: Warehouse, labelKey: 'inventory', href: '/inventory' },
   { icon: Library, labelKey: 'chartOfAccounts', href: '/accounting/accounts' },
+  { icon: Landmark, labelKey: 'banking', href: '/accounting/banking' },
   { icon: FileText, labelKey: 'reports', href: '/accounting/reports' },
   { icon: CreditCard, labelKey: 'bankReconciliation', href: '/accounting/bank-recon' },
   { icon: Settings, labelKey: 'settings', href: '/settings', adminOnly: true },
 ];
+
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
