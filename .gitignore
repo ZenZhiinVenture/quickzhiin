@@ -4,3 +4,7 @@
 node_modules/
 dist/
 build/
+CLAUDE.md
+AGENTS.md
+test-results/.last-run.json
+playwright-report/*
