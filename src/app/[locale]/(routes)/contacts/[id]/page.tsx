@@ -270,7 +270,7 @@ export default function ContactProfilePage() {
               <CardTitle className="text-lg flex items-center gap-2">
                 <ShieldCheck size={18} className="text-primary" /> Tax & Business Information
               </CardTitle>
-              <CardDescription>Legal and regulatory identifiers for LHDN compliance</CardDescription>
+              <CardDescription>Legal and regulatory identifiers for tax compliance</CardDescription>
             </CardHeader>
             <CardContent className="p-0">
               <div className="grid grid-cols-1 md:grid-cols-2">

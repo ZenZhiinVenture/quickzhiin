@@ -71,7 +71,7 @@ const contactFormSchema = (t: any) => z.object({
   regNo: z.string().min(1, t('fields.regNoError')),
   regNoType: z.string().min(1, t('fields.regNoTypeError')),
 
-  // Tax / LHDN
+  // Tax Information
   taxNo: z.string().min(1, t('fields.taxNoError')),
   sstNo: z.string(),
   msicCode: z.string(),

@@ -172,9 +172,7 @@ export default function SST02Report() {
                 <Button className="w-full vibrant-gradient text-white flex gap-3 justify-center py-7 text-lg font-black shadow-xl shadow-primary/30 active:scale-95 transition-all">
                     <Printer size={22} /> PRINT FORM
                 </Button>
-                <Button variant="outline" className="w-full border-white/10 py-6 text-sm font-bold hover:bg-white/5 transition-all flex gap-2">
-                    <FileText size={18} /> LHDN EXPORT
-                </Button>
+                
                 <p className="text-[10px] text-center text-muted-foreground font-medium uppercase tracking-tighter mt-4 opacity-50 px-2 leading-relaxed">
                     This form summarizes your Output Tax (Sales) and Input Tax (Purchases) for the selected taxable period.
                 </p>

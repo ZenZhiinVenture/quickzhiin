@@ -236,7 +236,7 @@
       "emailError": "Alamat e-mel tidak sah",
       "phoneError": "Nombor telefon diperlukan",
       "regNoError": "No. Pendaftaran diperlukan",
-      "taxNoError": "TIN diperlukan untuk pematuhan LHDN",
+      "taxNoError": "TIN diperlukan untuk pematuhan Tax",
       "addressError": "Alamat utama diperlukan",
       "postalCodeError": "Poskod diperlukan",
       "cityError": "Bandar diperlukan",
@@ -251,7 +251,7 @@
     },
     "sections": {
       "basic": "Maklumat Asas",
-      "tax": "Butiran LHDN & Cukai",
+      "tax": "Butiran Tax & Cukai",
       "address": "Alamat Kenalan"
     },
     "buttons": {

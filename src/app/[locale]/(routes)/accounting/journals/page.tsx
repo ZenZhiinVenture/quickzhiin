@@ -281,7 +281,7 @@ export default function JournalEntriesPage() {
           }
         }}
         onSuccess={() => {
-          fetchJournalEntries();
+          fetchJournals();
         }}
       />
     </div>

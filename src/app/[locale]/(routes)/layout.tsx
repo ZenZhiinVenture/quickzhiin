@@ -30,7 +30,7 @@ export default async function AuthLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!locales.includes(locale as 'en' | 'ms' | 'zh' | 'es' | 'fr')) {
+  if (!locales.includes(locale as any)) {
     redirect(`/en`);
   }
 

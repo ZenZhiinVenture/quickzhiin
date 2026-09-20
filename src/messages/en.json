@@ -291,7 +291,7 @@
       "emailError": "Invalid email address",
       "phoneError": "Phone number is required",
       "regNoError": "Registration No. is required",
-      "taxNoError": "TIN is required for LHDN compliance",
+      "taxNoError": "TIN is required for Tax compliance",
       "addressError": "Primary address is required",
       "postalCodeError": "Postal code is required",
       "cityError": "City is required",
@@ -306,7 +306,7 @@
     },
     "sections": {
       "basic": "Basic Information",
-      "tax": "LHDN & Tax Details",
+      "tax": "Tax & Tax Details",
       "address": "Contact Address"
     },
     "buttons": {

@@ -187,7 +187,7 @@
       "emailError": "无效的电子邮件地址",
       "phoneError": "电话号码为必填项",
       "regNoError": "注册号为必填项",
-      "taxNoError": "LHDN 合规需要 TIN",
+      "taxNoError": "Tax 合规需要 TIN",
       "addressError": "主要地址是必填项",
       "postalCodeError": "邮政编码是必填项",
       "cityError": "城市是必填项",
@@ -202,7 +202,7 @@
     },
     "sections": {
       "basic": "基本信息",
-      "tax": "LHDN 和税务详情",
+      "tax": "Tax 和税务详情",
       "address": "联系地址"
     },
     "buttons": {

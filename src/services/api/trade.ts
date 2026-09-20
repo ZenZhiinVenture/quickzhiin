@@ -23,9 +23,6 @@ export const tradeAPI = {
   createInvoice: (data: Record<string, unknown>) => api.post('/invoice', data),
   sendInvoiceEmail: (id: string | number) => api.post(`/invoice/${id}/send`),
 
-  submitLhdnInvoice: (id: string | number) => api.post(`/lhdn/submit/${id}`),
-  getLhdnInvoiceStatus: (id: string | number) => api.get(`/lhdn/status/${id}`),
-
   createDelivery: (data: Record<string, unknown>) => api.post('/trade/sales/delivery', data),
 
   // --- Purchase ---
