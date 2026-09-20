@@ -5,9 +5,6 @@ const withNextIntl = createNextIntlPlugin();
 
 module.exports = withNextIntl({
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },

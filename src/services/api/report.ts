@@ -27,4 +27,7 @@ export const reportAPI = {
 
   getInventoryDetail: (startDate?: string, endDate?: string) =>
     api.get('/report/inventory-detail', { params: { startDate, endDate } }),
+
+  getSST02: (startDate?: string, endDate?: string) =>
+    api.get('/report/sst-02', { params: { startDate, endDate } }),
 };
