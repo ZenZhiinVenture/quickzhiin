@@ -5,7 +5,7 @@ export default getRequestConfig(async ({ locale }) => {
   // Default to 'en' if locale is not supported
   const validLocale =
     typeof locale === 'string' &&
-      locales.includes(locale as 'en' | 'ms' | 'zh' | 'es' | 'fr')
+      locales.includes(locale as 'en' | 'ms' | 'zh')
       ? locale
       : 'en';
 

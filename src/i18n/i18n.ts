@@ -1,6 +1,6 @@
 import { getRequestConfig } from 'next-intl/server';
 
-export const locales = ['en', 'ms', 'zh', 'es', 'fr'] as const;
+export const locales = ['en', 'ms', 'zh'] as const;
 
 export const localeNames: { [key: string]: string } = {
   en: 'English',
@@ -18,7 +18,7 @@ export const localePrefix = 'as-needed';
 
 export default getRequestConfig(async ({ locale }) => {
   const validLocale =
-    typeof locale === 'string' && locales.includes(locale as 'en' | 'ms' | 'zh' | 'es' | 'fr')
+    typeof locale === 'string' && locales.includes(locale as 'en' | 'ms' | 'zh')
       ? locale
       : 'en';
 
