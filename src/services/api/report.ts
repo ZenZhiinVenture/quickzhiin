@@ -12,4 +12,10 @@ export const reportAPI = {
 
   getTrialBalance: (date?: string) => 
     api.get('/report/trial-balance', { params: { date } }),
+
+  getAgedReceivables: () => 
+    api.get('/report/aged-receivables'),
+
+  getAgedPayables: () => 
+    api.get('/report/aged-payables'),
 };
