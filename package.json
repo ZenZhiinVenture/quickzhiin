@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next build && next start",
+    "test:e2e": "playwright test",
     "extract": "next-intl extract",
     "generate": "next-intl generate",
     "lint": "eslint . --ext .ts,.tsx --fix",
