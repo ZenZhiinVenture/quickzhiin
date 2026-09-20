@@ -25,6 +25,8 @@ export default function PurchasesDashboard() {
   const t = useTranslations('Navigation');
   const { toast } = useToast();
   const [grns, setGrns] = useState([]);
+  const [requisitions, setRequisitions] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isWizardOpen, setIsWizardOpen] = useState(false);
   const [wizardType, setWizardType] = useState<'PURCHASE_REQUISITION' | 'PURCHASE_ORDER'>('PURCHASE_ORDER');
@@ -32,8 +34,14 @@ export default function PurchasesDashboard() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const res = await tradeAPI.getGRNs();
-      setGrns(res.data.data?.items || []);
+      const [grnRes, prRes, poRes] = await Promise.all([
+        tradeAPI.getGRNs(),
+        tradeAPI.getPurchaseRequisitions(),
+        tradeAPI.getPurchaseOrders()
+      ]);
+      setGrns(grnRes.data.data?.items || []);
+      setRequisitions(prRes.data.data?.items || []);
+      setOrders(poRes.data.data?.items || []);
     } catch (error) {
       toast({
         variant: 'destructive',
@@ -54,6 +62,22 @@ export default function PurchasesDashboard() {
     { accessorKey: 'vendor.legalname', header: 'Vendor' },
     { accessorKey: 'date', header: 'Date', cell: ({ row }: any) => dayjs(row.original.date).format('DD MMM YYYY') },
     { accessorKey: 'purchaseOrder.number', header: 'PO #', cell: ({ row }: any) => row.original.purchaseOrder?.number || 'Direct' },
+    { accessorKey: 'status', header: 'Status', cell: ({ row }: any) => <Badge>{row.original.status}</Badge> },
+  ];
+
+  const prColumns = [
+    { accessorKey: 'number', header: 'PR #' },
+    { accessorKey: 'date', header: 'Date', cell: ({ row }: any) => dayjs(row.original.date).format('DD MMM YYYY') },
+    { accessorKey: 'requester.firstName', header: 'Requester', cell: ({ row }: any) => `${row.original.requester?.firstName || ''} ${row.original.requester?.lastName || ''}` },
+    { accessorKey: 'priority', header: 'Priority', cell: ({ row }: any) => <Badge variant="outline">{row.original.priority}</Badge> },
+    { accessorKey: 'status', header: 'Status', cell: ({ row }: any) => <Badge>{row.original.status}</Badge> },
+  ];
+
+  const poColumns = [
+    { accessorKey: 'number', header: 'PO #' },
+    { accessorKey: 'contact.legalname', header: 'Vendor' },
+    { accessorKey: 'date', header: 'Date', cell: ({ row }: any) => dayjs(row.original.date).format('DD MMM YYYY') },
+    { accessorKey: 'total', header: 'Total', cell: ({ row }: any) => `RM ${parseFloat(row.original.total || 0).toFixed(2)}` },
     { accessorKey: 'status', header: 'Status', cell: ({ row }: any) => <Badge>{row.original.status}</Badge> },
   ];
 
@@ -134,14 +158,12 @@ export default function PurchasesDashboard() {
               <TabsList className="bg-transparent gap-6 h-auto p-0">
                 <TabsTrigger 
                   value="requisitions" 
-                  disabled
                   className="px-0 py-4 h-auto data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary rounded-none font-semibold transition-all duration-300"
                 >
                   <ClipboardList size={18} className="mr-2" /> {t('requisitions')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="purchase-orders" 
-                  disabled
                   className="px-0 py-4 h-auto data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary rounded-none font-semibold transition-all duration-300"
                 >
                   <ShoppingCart size={18} className="mr-2" /> {t('purchaseOrders')}
@@ -156,6 +178,12 @@ export default function PurchasesDashboard() {
             </div>
           </CardHeader>
           <CardContent className="p-6">
+            <TabsContent value="requisitions" className="m-0 focus-visible:ring-0">
+              <DataTable columns={prColumns} data={requisitions} search="number" />
+            </TabsContent>
+            <TabsContent value="purchase-orders" className="m-0 focus-visible:ring-0">
+              <DataTable columns={poColumns} data={orders} search="number" />
+            </TabsContent>
             <TabsContent value="grn" className="m-0 focus-visible:ring-0">
               <DataTable columns={grnColumns} data={grns} search="number" />
             </TabsContent>

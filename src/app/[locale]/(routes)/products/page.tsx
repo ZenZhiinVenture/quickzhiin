@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger 
 } from '@/components/dropdown';
 import { useToast } from '@/components/usetoast';
+import { ProductModal } from '@/components/modals/product-modal';
 
 interface Product {
   id: string;
@@ -31,6 +32,8 @@ interface Product {
 export default function ProductsPage() {
   const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const { toast } = useToast();
 
   const fetchProducts = async () => {
@@ -53,6 +56,16 @@ export default function ProductsPage() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const handleDelete = async (id: string) => {
+    try {
+      await productAPI.delete(id);
+      toast({ title: 'Success', description: 'Product deleted' });
+      fetchProducts();
+    } catch (error) {
+      toast({ variant: 'destructive', title: 'Error', description: 'Failed to delete' });
+    }
+  };
 
   const columns: ColumnDef<Product>[] = [
     {
@@ -105,11 +118,11 @@ export default function ProductsPage() {
               <DropdownMenuItem className="flex items-center gap-2">
                 <BarChart3 size={14} /> View Analytics
               </DropdownMenuItem>
-              <DropdownMenuItem className="flex items-center gap-2">
+              <DropdownMenuItem className="flex items-center gap-2" onClick={() => { setEditingProduct(row.original); setIsModalOpen(true); }}>
                 <Edit size={14} /> Edit Product
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-500 flex items-center gap-2">
+              <DropdownMenuItem className="text-red-500 flex items-center gap-2" onClick={() => handleDelete(row.original.id)}>
                 <Trash size={14} /> Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -126,7 +139,7 @@ export default function ProductsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Products & Services</h1>
           <p className="text-muted-foreground">Manage your inventory, pricing, and catalog.</p>
         </div>
-        <Button className="vibrant-gradient text-white flex gap-2">
+        <Button className="vibrant-gradient text-white flex gap-2" onClick={() => { setEditingProduct(null); setIsModalOpen(true); }}>
           <Plus size={18} /> Add Product
         </Button>
       </div>
@@ -170,6 +183,14 @@ export default function ProductsPage() {
           <DataTable columns={columns} data={data} search="name" />
         </CardContent>
       </Card>
+      
+      <ProductModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSuccess={fetchProducts}
+        // NOTE: product-modal doesn't fully support edit yet, we will update it next.
+        product={editingProduct}
+      />
     </div>
   );
 }

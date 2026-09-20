@@ -2,6 +2,7 @@ import api from './api';
 
 export const tradeAPI = {
   // --- Sales ---
+  getSalesActivityLogs: (params?: Record<string, unknown>) => api.get('/trade/sales/activity', { params }),
   getQuotes: (params?: Record<string, unknown>) => api.get('/trade/sales/quote', { params }),
   getQuoteById: (id: string | number) => api.get(`/trade/sales/quote/${id}`),
   createQuote: (data: Record<string, unknown>) => api.post('/trade/sales/quote', data),
@@ -14,12 +15,18 @@ export const tradeAPI = {
   getInvoices: (params?: Record<string, unknown>) => api.get('/invoice', { params }),
   getInvoiceById: (id: string | number) => api.get(`/invoice/${id}`),
   createInvoice: (data: Record<string, unknown>) => api.post('/invoice', data),
+  sendInvoiceEmail: (id: string | number) => api.post(`/invoice/${id}/send`),
+
+  submitLhdnInvoice: (id: string | number) => api.post(`/lhdn/submit/${id}`),
+  getLhdnInvoiceStatus: (id: string | number) => api.get(`/lhdn/status/${id}`),
 
   createDelivery: (data: Record<string, unknown>) => api.post('/trade/sales/delivery', data),
 
   // --- Purchase ---
   createPurchaseRequisition: (data: Record<string, unknown>) => api.post('/trade/purchase/requisition', data),
+  getPurchaseRequisitions: (params?: Record<string, unknown>) => api.get('/trade/purchase/requisition', { params }),
   createPurchaseOrder: (data: Record<string, unknown>) => api.post('/trade/purchase/order', data),
+  getPurchaseOrders: (params?: Record<string, unknown>) => api.get('/trade/purchase/order', { params }),
   createBill: (data: Record<string, unknown>) => api.post('/bill', data),
   getBills: (params?: Record<string, unknown>) => api.get('/bill', { params }),
   

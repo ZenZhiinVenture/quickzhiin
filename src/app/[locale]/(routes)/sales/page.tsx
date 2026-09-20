@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
 import { Button } from '@/components/button';
-import { Plus, ShoppingBag, ClipboardList, Truck, TrendingUp, History, FileText, Receipt, MoreVertical } from 'lucide-react';
+import { Plus, ShoppingBag, ClipboardList, Truck, TrendingUp, History, FileText, Receipt, MoreVertical, Mail, Send, CheckCircle } from 'lucide-react';
 import { tradeAPI } from '@/services/api/trade';
 import { DataTable } from '@/components/datatable';
 import {
@@ -19,7 +19,9 @@ import {
 import { useToast } from '@/components/usetoast';
 import { Badge } from '@/components/badge';
 import dayjs from 'dayjs';
+import toast from 'react-hot-toast';
 import { TradeWizardModal } from '@/components/modals/trade-wizard-modal';
+import { ActivityLogModal } from '@/components/modals/activity-log-modal';
 
 export default function SalesDashboard() {
   const t = useTranslations('Navigation');
@@ -29,6 +31,7 @@ export default function SalesDashboard() {
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isWizardOpen, setIsWizardOpen] = useState(false);
+  const [isActivityLogOpen, setIsActivityLogOpen] = useState(false);
   const [wizardType, setWizardType] = useState<'SALES_QUOTE' | 'SALES_ORDER' | 'SALES_INVOICE'>('SALES_QUOTE');
 
   const fetchData = async () => {
@@ -145,6 +148,76 @@ export default function SalesDashboard() {
     { accessorKey: 'date', header: 'Date', cell: ({ row }: any) => dayjs(row.original.date).format('DD MMM YYYY') },
     { accessorKey: 'total', header: 'Total', cell: ({ row }: any) => `RM ${Number(row.original.total).toFixed(2)}` },
     { accessorKey: 'status', header: 'Status', cell: ({ row }: any) => <Badge variant="outline" className="border-green-500 text-green-500">{row.original.status}</Badge> },
+    { 
+      accessorKey: 'lhdnStatus', 
+      header: 'LHDN Status', 
+      cell: ({ row }: any) => {
+        const lhdn = row.original.lhdnStatus;
+        if (!lhdn) return <span className="text-muted-foreground text-xs">Unsubmitted</span>;
+        return <Badge variant={lhdn === 'Valid' ? 'default' : 'secondary'}>{lhdn}</Badge>;
+      } 
+    },
+    {
+      id: "actions",
+      cell: ({ row }: any) => {
+        const invoice = row.original;
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <MoreVertical className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="glass">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem onClick={() => {
+                window.open(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/invoice/${invoice.id}/pdf`, '_blank');
+              }}>
+                <FileText className="mr-2 h-4 w-4" /> Download PDF
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={async () => {
+                try {
+                  toast.loading('Sending email...', { id: 'email' });
+                  await tradeAPI.sendInvoiceEmail(invoice.id);
+                  toast.success('Email sent successfully!', { id: 'email' });
+                } catch (error) {
+                  toast.error('Failed to send email', { id: 'email' });
+                }
+              }}>
+                <Mail className="mr-2 h-4 w-4" /> Send Email
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={async () => {
+                try {
+                  toast.loading('Submitting to LHDN...', { id: 'lhdn' });
+                  await tradeAPI.submitLhdnInvoice(invoice.id);
+                  toast.success('Submitted to LHDN successfully!', { id: 'lhdn' });
+                  fetchData();
+                } catch (error: any) {
+                  toast.error(error.response?.data?.message || 'Failed to submit to LHDN', { id: 'lhdn' });
+                }
+              }} disabled={invoice.lhdnStatus === 'Valid'}>
+                <Send className="mr-2 h-4 w-4 text-blue-500" /> Submit to LHDN
+              </DropdownMenuItem>
+              {invoice.lhdnStatus === 'Submitted' && (
+                <DropdownMenuItem onClick={async () => {
+                  try {
+                    toast.loading('Checking status...', { id: 'lhdn_status' });
+                    await tradeAPI.getLhdnInvoiceStatus(invoice.id);
+                    toast.success('LHDN status updated!', { id: 'lhdn_status' });
+                    fetchData();
+                  } catch (error) {
+                    toast.error('Failed to check status', { id: 'lhdn_status' });
+                  }
+                }}>
+                  <CheckCircle className="mr-2 h-4 w-4 text-green-500" /> Check LHDN Status
+                </DropdownMenuItem>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
+      },
+    },
   ];
 
   return (
@@ -163,7 +236,7 @@ export default function SalesDashboard() {
           </div>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" className="glass hover:bg-accent/50 transition-all duration-300">
+          <Button variant="outline" className="glass hover:bg-accent/50 transition-all duration-300" onClick={() => setIsActivityLogOpen(true)}>
             <History size={18} className="mr-2" /> Activity Log
           </Button>
           
@@ -289,6 +362,10 @@ export default function SalesDashboard() {
         onClose={() => setIsWizardOpen(false)} 
         type={wizardType} 
         onSuccess={fetchData}
+      />
+      <ActivityLogModal 
+        isOpen={isActivityLogOpen} 
+        onClose={() => setIsActivityLogOpen(false)} 
       />
     </div>
   );

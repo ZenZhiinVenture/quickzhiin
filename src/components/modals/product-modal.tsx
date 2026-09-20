@@ -40,9 +40,10 @@ interface ProductModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess?: (product: any) => void;
+  product?: any;
 }
 
-export function ProductModal({ isOpen, onClose, onSuccess }: ProductModalProps) {
+export function ProductModal({ isOpen, onClose, onSuccess, product }: ProductModalProps) {
   const [loading, setLoading] = React.useState(false);
   const { toast } = useToast();
 
@@ -68,6 +69,36 @@ export function ProductModal({ isOpen, onClose, onSuccess }: ProductModalProps) 
     }
   });
 
+  React.useEffect(() => {
+    if (product && isOpen) {
+      reset({
+        name: product.name || "",
+        classificationCode: product.classificationCode || product.sku || "",
+        description: product.description || "",
+        salePrice: product.salePrice || 0,
+        purchasePrice: product.purchasePrice || 0,
+        isActive: product.isActive ?? true,
+        productType: product.productType || "Service",
+        isInventory: product.isInventory ?? false,
+        msicCode: product.msicCode || "",
+        msicDescription: product.msicDescription || ""
+      });
+    } else if (isOpen) {
+      reset({
+        name: "",
+        classificationCode: "",
+        description: "",
+        salePrice: 0,
+        purchasePrice: 0,
+        isActive: true,
+        productType: "Service",
+        isInventory: false,
+        msicCode: "",
+        msicDescription: ""
+      });
+    }
+  }, [product, isOpen, reset]);
+
   const onSubmit = async (data: ProductFormValues) => {
     try {
       setLoading(true);
@@ -83,11 +114,22 @@ export function ProductModal({ isOpen, onClose, onSuccess }: ProductModalProps) 
           msicDescription: data.msicDescription || "",
         }
       };
-      const response = await productAPI.create(payload);
-      toast({
-        title: "Success",
-        description: "Product created successfully.",
-      });
+      
+      let response;
+      if (product?.id) {
+        response = await productAPI.update(product.id, payload);
+        toast({
+          title: "Success",
+          description: "Product updated successfully.",
+        });
+      } else {
+        response = await productAPI.create(payload);
+        toast({
+          title: "Success",
+          description: "Product created successfully.",
+        });
+      }
+      
       const newProduct = response.data.product || response.data.data || response.data;
       onSuccess?.(newProduct);
       reset();
@@ -96,7 +138,7 @@ export function ProductModal({ isOpen, onClose, onSuccess }: ProductModalProps) 
       toast({
         variant: "destructive",
         title: "Error",
-        description: error.response?.data?.message || "Failed to create product",
+        description: error.response?.data?.message || `Failed to ${product?.id ? 'update' : 'create'} product`,
       });
     } finally {
       setLoading(false);
@@ -108,10 +150,10 @@ export function ProductModal({ isOpen, onClose, onSuccess }: ProductModalProps) 
       <DialogContent className="max-w-[600px] bg-background text-foreground border-none shadow-2xl p-0 overflow-hidden">
         <DialogHeader className="p-8 pb-4 vibrancy-gradient text-white">
           <DialogTitle className="text-2xl font-bold flex items-center gap-3">
-            <Package size={28} /> Quick Add Product
+            <Package size={28} /> {product?.id ? 'Edit Product' : 'Quick Add Product'}
           </DialogTitle>
           <DialogDescription className="text-white/70">
-            Create a new product or service to add it to your document.
+            {product?.id ? 'Modify the details of your existing product or service.' : 'Create a new product or service to add it to your document.'}
           </DialogDescription>
         </DialogHeader>
 
@@ -231,7 +273,7 @@ export function ProductModal({ isOpen, onClose, onSuccess }: ProductModalProps) 
                 Cancel
                 </Button>
                 <Button type="submit" className="vibrant-gradient text-white px-8" disabled={loading}>
-                {loading ? <Loader2 className="animate-spin mr-2" /> : "Save Product"}
+                {loading ? <Loader2 className="animate-spin mr-2" /> : (product?.id ? "Update Product" : "Save Product")}
                 </Button>
             </DialogFooter>
             </form>

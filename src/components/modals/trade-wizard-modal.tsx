@@ -246,11 +246,16 @@ export function TradeWizardModal({ isOpen, onClose, type, onSuccess }: TradeWiza
                     </div>
                     <div className="space-y-4">
                       <Label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Currency</Label>
-                      <Input
-                        className="glass h-11 bg-accent/20"
-                        readOnly
+                      <select
+                        className="flex h-11 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 glass text-foreground"
                         {...methods.register('currency')}
-                      />
+                      >
+                        <option value="RM">RM - Malaysian Ringgit</option>
+                        <option value="USD">USD - US Dollar</option>
+                        <option value="SGD">SGD - Singapore Dollar</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                      </select>
                     </div>
                   </div>
 

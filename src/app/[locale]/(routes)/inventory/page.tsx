@@ -112,14 +112,12 @@ export default function InventoryDashboard() {
                 </TabsTrigger>
                 <TabsTrigger 
                   value="movements" 
-                  disabled
                   className="px-0 py-4 h-auto data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary rounded-none font-semibold transition-all duration-300"
                 >
                   <History size={18} className="mr-2" /> {t('stockMovements')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="adjustment" 
-                  disabled
                   className="px-0 py-4 h-auto data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary rounded-none font-semibold transition-all duration-300"
                 >
                   <Settings2 size={18} className="mr-2" /> Stock Adjustment
@@ -130,6 +128,18 @@ export default function InventoryDashboard() {
           <CardContent className="p-6">
             <TabsContent value="warehouses" className="m-0 focus-visible:ring-0">
               <DataTable columns={warehouseColumns} data={warehouses} search="name" />
+            </TabsContent>
+            <TabsContent value="movements" className="m-0 focus-visible:ring-0">
+              <div className="flex flex-col items-center justify-center p-8 text-muted-foreground">
+                <History size={48} className="mb-4 opacity-20" />
+                <p>Select a product to view its stock movements.</p>
+              </div>
+            </TabsContent>
+            <TabsContent value="adjustment" className="m-0 focus-visible:ring-0">
+              <div className="flex flex-col items-center justify-center p-8 text-muted-foreground">
+                <Settings2 size={48} className="mb-4 opacity-20" />
+                <p>Stock adjustment history will appear here.</p>
+              </div>
             </TabsContent>
           </CardContent>
         </Tabs>
