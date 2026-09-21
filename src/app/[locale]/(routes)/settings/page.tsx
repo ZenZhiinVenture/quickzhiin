@@ -2,12 +2,21 @@
 
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/card';
-import { Users, Shield, Settings as SettingsIcon, Bell, Lock, Calendar } from 'lucide-react';
+import { Users, Shield, Settings as SettingsIcon, Bell, Lock, Calendar, Coins } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { cn } from '@/utils/cn';
 
 const settingsCategories = [
+  {
+    title: 'Currencies & Exchange Rates',
+    description: 'Set company base currency and manage conversion rates',
+    icon: Coins,
+    href: '/settings/currencies',
+    color: 'text-amber-500',
+    bgColor: 'bg-amber-500/10',
+    adminOnly: true
+  },
   {
     title: 'Accounting Periods',
     description: 'Lock and seal fiscal periods to prevent backdated entries',
