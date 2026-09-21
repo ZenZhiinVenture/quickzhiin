@@ -9,7 +9,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 
-[Live Demo](#) · [Report a Bug](https://github.com/zenzhiin/quickzhiin/issues) · [Request Feature](https://github.com/zenzhiin/quickzhiin/issues)
+[Live Demo](#) · [Report a Bug](https://github.com/ZenZhiinVenture/quickzhiin/issues) · [Request Feature](https://github.com/ZenZhiinVenture/quickzhiin/issues)
 
 </div>
 
@@ -95,7 +95,7 @@ This repository is the **frontend web application**. It works together with its 
 
 ```bash
 # 1. Clone the frontend
-git clone https://github.com/zenzhiin/quickzhiin.git
+git clone https://github.com/ZenZhiinVenture/quickzhiin.git
 cd quickzhiin
 
 # 2. Install dependencies
