@@ -61,6 +61,7 @@
   "Navigation": {
     "dashboard": "仪表板",
     "accounting": "会计",
+    "accountingPeriods": "会计期间",
     "crm": "客户关系管理",
     "sales": "销售",
     "quotes": "销售报价单",

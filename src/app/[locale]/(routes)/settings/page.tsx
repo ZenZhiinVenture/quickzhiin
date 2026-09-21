@@ -2,12 +2,21 @@
 
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/card';
-import { Users, Shield, Settings as SettingsIcon, Bell, Lock } from 'lucide-react';
+import { Users, Shield, Settings as SettingsIcon, Bell, Lock, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { cn } from '@/utils/cn';
 
 const settingsCategories = [
+  {
+    title: 'Accounting Periods',
+    description: 'Lock and seal fiscal periods to prevent backdated entries',
+    icon: Calendar,
+    href: '/accounting/periods',
+    color: 'text-indigo-500',
+    bgColor: 'bg-indigo-500/10',
+    adminOnly: true
+  },
   {
     title: 'User Management',
     description: 'Manage users, roles and permissions',

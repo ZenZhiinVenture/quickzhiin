@@ -80,6 +80,7 @@
   "Navigation": {
     "dashboard": "Dashboard",
     "accounting": "Accounting",
+    "accountingPeriods": "Accounting Periods",
     "crm": "CRM",
     "sales": "Sales",
     "quotes": "Sales Quotes",

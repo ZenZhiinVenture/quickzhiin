@@ -24,7 +24,8 @@ import {
   Truck,
   History,
   FileSearch,
-  Landmark
+  Landmark,
+  Calendar
 } from 'lucide-react';
 
 import { cn } from '@/utils/cn';
@@ -41,6 +42,7 @@ const menuItems = [
   { icon: FileText, labelKey: 'bills', href: '/Supplier/bills' },
   { icon: Warehouse, labelKey: 'inventory', href: '/inventory' },
   { icon: Library, labelKey: 'chartOfAccounts', href: '/accounting/accounts' },
+  { icon: Calendar, labelKey: 'accountingPeriods', href: '/accounting/periods' },
   { icon: Landmark, labelKey: 'banking', href: '/accounting/banking' },
   { icon: FileText, labelKey: 'reports', href: '/accounting/reports' },
   { icon: CreditCard, labelKey: 'bankReconciliation', href: '/accounting/bank-recon' },
