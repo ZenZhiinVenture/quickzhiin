@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next build && next start",
+    "build": "next build --webpack",
+    "start": "next build --webpack && next start",
     "test:e2e": "playwright test",
     "extract": "next-intl extract",
     "generate": "next-intl generate",

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/card';
@@ -8,7 +9,7 @@ import { Button } from '@/components/button';
 import {
   Plus, ShoppingBag, ClipboardList, Truck, TrendingUp, History,
   FileText, Receipt, MoreVertical, Mail, Send, CheckCircle,
-  RefreshCw, Trash2, Eye, FileX
+  RefreshCw, Trash2, Eye, FileX, Repeat
 } from 'lucide-react';
 import { tradeAPI } from '@/services/api/trade';
 import { DataTable } from '@/components/datatable';
@@ -305,6 +306,11 @@ export default function SalesDashboard() {
           </div>
         </div>
         <div className="flex gap-2">
+          <Link href="/sales/recurring">
+            <Button variant="outline" className="glass hover:bg-accent/50 transition-all duration-300 gap-2">
+              <Repeat size={18} className="text-primary" /> Recurring Invoices
+            </Button>
+          </Link>
           <Button variant="outline" className="glass hover:bg-accent/50 transition-all duration-300" onClick={() => setIsActivityLogOpen(true)}>
             <History size={18} className="mr-2" /> Activity Log
           </Button>
